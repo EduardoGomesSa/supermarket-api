@@ -2,8 +2,6 @@
 
 namespace supermarket.data.contexts
 {
-    public class BloggingContext
-    {
         public class BloggingContext : DbContext
         {
             public DbSet<Blog> Blogs { get; set; }
@@ -30,5 +28,4 @@ namespace supermarket.data.contexts
             public int BlogId { get; set; }
             public Blog Blog { get; set; }
         }
-    }
 }
