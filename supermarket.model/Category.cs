@@ -1,7 +1,11 @@
-﻿namespace supermarket.model
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace supermarket.model
 {
     public class Category
     {
+        public Category() { }
+
         public Category(int id, string name)
         {
             Id = id;
@@ -10,6 +14,6 @@
 
         public int Id { get; set; }
         public string Name { get; set; }
-        public List<Product> Products { get; set; }
+        public virtual List<Product> Products { get; set; }
     }
 }
