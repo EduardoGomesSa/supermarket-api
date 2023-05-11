@@ -13,9 +13,9 @@ namespace supermarket.data.Configurations
             builder.HasKey(p => p.Id);
             builder.Property(p => p.Name).HasColumnName("name").HasColumnType("VARCHAR(30)").IsRequired();
 
-            builder.HasMany(p => p.Products)
-                .WithOne(p => p.Category)
-                .OnDelete(DeleteBehavior.Cascade);
+            //builder.HasMany(p => p.Products)
+            //    .WithOne(p => p.Category)
+            //    .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }
