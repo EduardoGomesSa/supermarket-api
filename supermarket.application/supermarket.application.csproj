@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\supermarket.data\supermarket.data.csproj" />
+    <ProjectReference Include="..\supermarket.model\supermarket.model.csproj" />
   </ItemGroup>
 
 </Project>
