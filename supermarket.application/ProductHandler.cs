@@ -5,14 +5,18 @@ namespace supermarket.application
 {
     public class ProductHandler
     {
-        public void Add(Product product)
+        public bool Add(Product product)
         {
+            var productSaved = false;
+
             using (var context = new ApplicationContext())
             {
                 context.Products.Add(product);
 
-                context.SaveChanges();
+                productSaved = context.SaveChanges() > 0;
             }
+
+            return productSaved;
         }
     }
 }

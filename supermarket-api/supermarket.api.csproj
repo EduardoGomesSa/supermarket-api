@@ -18,6 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\supermarket.application\supermarket.application.csproj" />
     <ProjectReference Include="..\supermarket.data\supermarket.data.csproj" />
   </ItemGroup>
 

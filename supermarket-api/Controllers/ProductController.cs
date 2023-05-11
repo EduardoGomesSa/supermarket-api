@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using supermarket.application;
 using supermarket.data.contexts;
 using supermarket.model;
 
@@ -16,15 +17,13 @@ namespace supermarket_api.Controllers
         [HttpPost]
         public IActionResult Store([FromBody]Product product)
         {
-            var saved = 0;
-            using (var context = new ApplicationContext())
-            {
-                context.Products.Add(product);
+            var productHandler = new ProductHandler();
 
-                saved = context.SaveChanges();
-            }
+            var saved = productHandler.Add(product);
 
-            return Ok(saved);
+            if(saved) return Ok("Produto cadastrado com sucesso");
+
+            return BadRequest("Não foi possivel cadastrar o produto");
         }
     }
 }
