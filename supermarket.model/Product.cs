@@ -1,4 +1,6 @@
-﻿namespace supermarket.model
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace supermarket.model
 {
     public class Product
     {
@@ -20,6 +22,7 @@
         public decimal Price { get; set; }
         public int Amount { get; set; }
         public int CategoryId { get; set; }
+        [NotMapped]
         public Category Category { get; set; }
 
     }
