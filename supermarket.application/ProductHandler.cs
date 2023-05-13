@@ -1,4 +1,5 @@
-﻿using supermarket.data.contexts;
+﻿using Microsoft.EntityFrameworkCore;
+using supermarket.data.contexts;
 using supermarket.model;
 
 namespace supermarket.application
@@ -44,7 +45,9 @@ namespace supermarket.application
 
                 if (product != null)
                 {
-                    productDeleted = context.Products.Remove(product);
+                    var entry = context.Products.Remove(product);
+
+                    productDeleted = context.SaveChanges() > 0;
                 }
             }
 

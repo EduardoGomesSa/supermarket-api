@@ -25,5 +25,17 @@ namespace supermarket_api.Controllers
 
             return BadRequest("Não foi possivel cadastrar o produto");
         }
+
+        [HttpDelete]
+        public IActionResult Destroy([FromHeader] int id)
+        {
+            var productHandler = new ProductHandler();
+
+            var productDeleted = productHandler.Delete(id);
+
+            if (productDeleted) return Ok("O produto foi excluído com sucesso");
+
+            return BadRequest("Não foi possível excluir o produto");
+        }
     }
 }
