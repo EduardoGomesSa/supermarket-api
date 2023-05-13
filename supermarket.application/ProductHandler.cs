@@ -36,7 +36,19 @@ namespace supermarket.application
 
         public bool Delete(int id)
         {
-            return false
+            var productDeleted = false;
+
+            using (var context = new ApplicationContext())
+            {
+                var product = context.Products.FirstOrDefault(p => p.Id == id);
+
+                if (product != null)
+                {
+                    productDeleted = context.Products.Remove(product);
+                }
+            }
+
+            return productDeleted;
         }
     }
 }
