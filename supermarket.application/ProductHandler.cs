@@ -33,5 +33,10 @@ namespace supermarket.application
 
             return productSaved;
         }
+
+        public bool Delete(int id)
+        {
+            return false
+        }
     }
 }
