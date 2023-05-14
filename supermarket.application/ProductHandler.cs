@@ -49,6 +49,17 @@ namespace supermarket.application
 
                     productDeleted = context.SaveChanges() > 0;
                 }
+
+                var existProductInCategory = context.Products.FirstOrDefault(p => p.CategoryId == product.CategoryId);
+
+                if(existProductInCategory!= null)
+                {
+                    var category = context.Categories.FirstOrDefault(c => c.Id == product.CategoryId);
+
+                    var entry = context.Categories.Remove(category);
+
+                    context.SaveChanges();
+                }
             }
 
             return productDeleted;
