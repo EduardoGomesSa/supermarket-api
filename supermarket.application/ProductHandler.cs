@@ -57,6 +57,7 @@ namespace supermarket.application
             using (var context = new ApplicationContext())
             {
                 var product = context.Products.FirstOrDefault(p => p.Id == id);
+                var categoriaId = product.CategoryId;
 
                 if (product != null)
                 {
@@ -65,9 +66,9 @@ namespace supermarket.application
                     productDeleted = context.SaveChanges() > 0;
                 }
 
-                var existProductInCategory = context.Products.FirstOrDefault(p => p.CategoryId == product.CategoryId);
+                var existProductInCategory = context.Products.FirstOrDefault(p => p.CategoryId == categoriaId);
 
-                if(existProductInCategory!= null)
+                if(existProductInCategory == null)
                 {
                     var category = context.Categories.FirstOrDefault(c => c.Id == product.CategoryId);
 
