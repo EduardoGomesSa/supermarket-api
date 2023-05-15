@@ -13,31 +13,7 @@ namespace supermarket.application
 
             using (var context = new ApplicationContext())
             {
-                //products = context.Products.ToList();
-
-                //products = context.Products.Include(p => p.Category).ToList();
-
-                //products = context.Products.Include(p => p.Category.Name);
-
                 products = context.Products.Include(p => p.Category).ToList();
-
-                //var productsReturneds = from product in context.Products
-                //           join category in context.Categories
-                //           on product.CategoryId equals category.Id
-                //           select new
-                //           {
-                //               Id = product.Id,
-                //               Name = product.Name,
-                //               Price = product.Price,
-                //               Description = product.Description,
-                //               Amount = product.Amount,
-                //               Category = new {
-                //                   category.Id,
-                //                   category.Name 
-                //               }
-                //           };
-
-                //products = productsReturneds.ToList();
 
             }
 
@@ -102,6 +78,27 @@ namespace supermarket.application
             }
 
             return productDeleted;
+        }
+
+        public bool Update(int id, Product product)
+        {
+            var productUpdated = false;
+            using(var context = new ApplicationContext())
+            {
+                var productSalve = context.Products.FirstOrDefault(p => p.Id == id);
+
+                if (productSalve != null)
+                {
+                    productSalve.Name = product.Name;
+                    productSalve.Description = product.Description;
+                    productSalve.Price = product.Price;
+                    productSalve.Amount = product.Amount;
+                }
+
+                productUpdated = context.SaveChanges() > 0;
+            }
+
+            return productUpdated;
         }
     }
 }

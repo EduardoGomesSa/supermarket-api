@@ -48,5 +48,17 @@ namespace supermarket_api.Controllers
 
             return Ok("Não há nenhum produto cadastrado");
         }
+
+        [HttpPut]
+        public IActionResult Put(int id, [FromBody]Product product)
+        {
+            var productHandler = new ProductHandler();
+
+            var productUpdated = productHandler.Update(id, product);
+
+            if (productUpdated) return Ok("Produto atualizado com sucesso");
+
+            return BadRequest("Não foi possível atualizar o produto");
+        }
     }
 }
