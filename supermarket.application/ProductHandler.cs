@@ -13,7 +13,32 @@ namespace supermarket.application
 
             using (var context = new ApplicationContext())
             {
-                products = context.Products.ToList();
+                //products = context.Products.ToList();
+
+                //products = context.Products.Include(p => p.Category).ToList();
+
+                //products = context.Products.Include(p => p.Category.Name);
+
+                products = context.Products.Include(p => p.Category).ToList();
+
+                //var productsReturneds = from product in context.Products
+                //           join category in context.Categories
+                //           on product.CategoryId equals category.Id
+                //           select new
+                //           {
+                //               Id = product.Id,
+                //               Name = product.Name,
+                //               Price = product.Price,
+                //               Description = product.Description,
+                //               Amount = product.Amount,
+                //               Category = new {
+                //                   category.Id,
+                //                   category.Name 
+                //               }
+                //           };
+
+                //products = productsReturneds.ToList();
+
             }
 
             return products;
@@ -40,6 +65,7 @@ namespace supermarket.application
                     product.CategoryId = category.Id;
                 }
 
+                product.Category = null;
                 context.Products.Add(product);
 
                 productSaved = context.SaveChanges() > 0;

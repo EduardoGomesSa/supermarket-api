@@ -1,4 +1,6 @@
 ﻿
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace supermarket.model
 {
     public class Category
@@ -13,6 +15,7 @@ namespace supermarket.model
 
         public int Id { get; set; }
         public string Name { get; set; }
-        //public virtual List<Product> Products { get; set; }
+        //[NotMapped]
+        //public List<Product> Products { get; set; }
     }
 }
