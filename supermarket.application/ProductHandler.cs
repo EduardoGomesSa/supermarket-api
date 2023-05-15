@@ -6,6 +6,19 @@ namespace supermarket.application
 {
     public class ProductHandler
     {
+
+        public List<Product> Get()
+        {
+            var products = new List<Product>();
+
+            using (var context = new ApplicationContext())
+            {
+                products = context.Products.ToList();
+            }
+
+            return products;
+        }
+
         public bool Add(Product product)
         {
             var productSaved = false;

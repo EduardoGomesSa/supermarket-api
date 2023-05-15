@@ -37,5 +37,16 @@ namespace supermarket_api.Controllers
 
             return BadRequest("Não foi possível excluir o produto");
         }
+
+        [HttpGet]
+        public IActionResult Index()
+        {
+            var productHandler = new ProductHandler();
+
+            var products = productHandler.Get();
+            if(products.Count > 0) return Ok(products);
+
+            return Ok("Não há nenhum produto cadastrado");
+        }
     }
 }
