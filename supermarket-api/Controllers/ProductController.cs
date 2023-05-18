@@ -9,11 +9,6 @@ namespace supermarket_api.Controllers
     [ApiController]
     public class ProductController : ControllerBase
     {
-        //public IActionResult Index()
-        //{
-        //    return View();
-        //}
-
         [HttpPost]
         public IActionResult Store([FromBody]Product product)
         {
@@ -47,6 +42,14 @@ namespace supermarket_api.Controllers
             if(products.Count > 0) return Ok(products);
 
             return Ok("Não há nenhum produto cadastrado");
+        }
+
+        [HttpGet]
+        public IActionResult GetById(int id)
+        {
+            var productHandler = new ProductHandler();
+
+            return Ok();
         }
 
         [HttpPut]
