@@ -30,5 +30,24 @@ namespace supermarket.application
 
             return category;
         }
+
+        public bool Update(int id, Category category)
+        {
+            var updeted = false;
+
+            using(var context = new ApplicationContext())
+            {
+                var categoryExisting = context.Categories.FirstOrDefault(c => c.Id == id);
+
+                if(categoryExisting != null)
+                {
+                    categoryExisting.Name = category.Name;
+                }
+
+                updeted = context.SaveChanges() > 0;
+            }
+
+            return updeted;
+        }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using supermarket.application;
+using supermarket.model;
 
 namespace supermarket_api.Controllers
 {
@@ -29,6 +30,18 @@ namespace supermarket_api.Controllers
             if (category != null) return Ok(category);
 
             return Ok("categoria não existe");
+        }
+
+        [HttpPut]
+        public IActionResult Put([FromHeader]int id, [FromBody] Category category)
+        {
+            var categoryHandler = new CategoryHandler();
+
+            var categoryUpdeted = categoryHandler.Update(id, category);
+
+            if(categoryUpdeted) return Ok("Category updeted with sucess");
+
+            return BadRequest("Category don´t updated");
         }
     }
 }
