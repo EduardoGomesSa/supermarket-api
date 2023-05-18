@@ -18,5 +18,17 @@ namespace supermarket_api.Controllers
 
             return Ok("Não tem nenhuma categoria cadastrada");
         }
+
+        [HttpGet("GetById")]
+        public IActionResult GetById(int id)
+        {
+            var categoryHandler = new CategoryHandler();
+
+            var category = categoryHandler.GetById(id);
+
+            if (category != null) return Ok(category);
+
+            return Ok("categoria não existe");
+        }
     }
 }

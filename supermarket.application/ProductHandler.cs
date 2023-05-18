@@ -28,7 +28,6 @@ namespace supermarket.application
             using (var context = new ApplicationContext())
             {
                 product = context.Products.Include(p => p.Category).FirstOrDefault(p => p.Id == id);
-                //product = context.Products.FirstOrDefault(p => p.Id == id);
             }
 
             return product;
