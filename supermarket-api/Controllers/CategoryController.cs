@@ -6,6 +6,9 @@ namespace supermarket_api.Controllers
     [ApiController]
     public class CategoryController : ControllerBase
     {
-        
+        public IActionResult Index()
+        {
+            return Ok();
+        }
     }
 }
