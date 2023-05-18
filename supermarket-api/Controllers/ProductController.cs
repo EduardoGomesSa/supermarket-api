@@ -44,12 +44,16 @@ namespace supermarket_api.Controllers
             return Ok("Não há nenhum produto cadastrado");
         }
 
-        [HttpGet]
-        public IActionResult GetById(int id)
+        [HttpGet("GetById")]
+        public IActionResult GetById([FromHeader]int id)
         {
             var productHandler = new ProductHandler();
 
-            return Ok();
+            var product = productHandler.GetById(id);
+
+            if (product != null) return Ok(product);
+
+            return NotFound("Produto não existe");
         }
 
         [HttpPut]

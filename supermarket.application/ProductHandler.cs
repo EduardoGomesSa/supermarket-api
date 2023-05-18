@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
 using supermarket.data.contexts;
 using supermarket.model;
 
@@ -18,6 +19,18 @@ namespace supermarket.application
             }
 
             return products;
+        }
+
+        public Product GetById(int id)
+        {
+            var product = new Product();
+
+            using (var context = new ApplicationContext())
+            {
+                product = context.Products.FirstOrDefault(p => p.Id == id);
+            }
+
+            return product;
         }
 
         public bool Add(Product product)
