@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using supermarket.application;
 
 namespace supermarket_api.Controllers
 {
@@ -6,9 +7,16 @@ namespace supermarket_api.Controllers
     [ApiController]
     public class CategoryController : ControllerBase
     {
+        [HttpGet]
         public IActionResult Index()
         {
-            return Ok();
+            var categoryHandler = new CategoryHandler();
+
+            var categories = categoryHandler.Get();
+
+            if(categories.Count > 0) return Ok(categories);
+
+            return Ok("Não tem nenhuma categoria cadastrada");
         }
     }
 }
