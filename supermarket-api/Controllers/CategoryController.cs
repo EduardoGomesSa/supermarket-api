@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using supermarket.application;
+using supermarket.application.Handlers;
 using supermarket.model;
 
 namespace supermarket_api.Controllers

@@ -2,7 +2,7 @@
 using supermarket.data.contexts;
 using supermarket.model;
 
-namespace supermarket.application
+namespace supermarket.application.Handlers
 {
     public class CategoryHandler
     {
@@ -10,7 +10,7 @@ namespace supermarket.application
         {
             var categories = new List<Category>();
 
-            using(var context = new ApplicationContext())
+            using (var context = new ApplicationContext())
             {
                 categories = context.Categories.ToList();
                 //categories = context.Categories.Include(c => c.Products).ToList();
@@ -23,7 +23,7 @@ namespace supermarket.application
         {
             var category = new Category();
 
-            using(var context = new ApplicationContext())
+            using (var context = new ApplicationContext())
             {
                 category = context.Categories.FirstOrDefault(c => c.Id == id);
             }
@@ -35,11 +35,11 @@ namespace supermarket.application
         {
             var updeted = false;
 
-            using(var context = new ApplicationContext())
+            using (var context = new ApplicationContext())
             {
                 var categoryExisting = context.Categories.FirstOrDefault(c => c.Id == id);
 
-                if(categoryExisting != null)
+                if (categoryExisting != null)
                 {
                     categoryExisting.Name = category.Name;
                 }

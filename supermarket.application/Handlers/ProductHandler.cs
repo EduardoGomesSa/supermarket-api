@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using supermarket.data.contexts;
 using supermarket.model;
 
-namespace supermarket.application
+namespace supermarket.application.Handlers
 {
     public class ProductHandler
     {
@@ -81,7 +81,7 @@ namespace supermarket.application
 
                 var existProductInCategory = context.Products.FirstOrDefault(p => p.CategoryId == categoriaId);
 
-                if(existProductInCategory == null)
+                if (existProductInCategory == null)
                 {
                     var category = context.Categories.FirstOrDefault(c => c.Id == product.CategoryId);
 
@@ -97,7 +97,7 @@ namespace supermarket.application
         public bool Update(int id, Product product)
         {
             var productUpdated = false;
-            using(var context = new ApplicationContext())
+            using (var context = new ApplicationContext())
             {
                 var productSalve = context.Products.FirstOrDefault(p => p.Id == id);
 
