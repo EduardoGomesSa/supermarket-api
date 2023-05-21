@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using supermarket.application.Handlers;
+using supermarket.application.Interfaces;
 using supermarket.data.contexts;
 using supermarket.model;
 
@@ -9,12 +10,17 @@ namespace supermarket_api.Controllers
     [ApiController]
     public class ProductController : ControllerBase
     {
-        ProductHandler productHandler = new ProductHandler();
+        private readonly IProductHandler _productHandler;
+
+        public ProductController(IProductHandler productHandler)
+        {
+            _productHandler = productHandler;
+        }
 
         [HttpPost]
         public IActionResult Store([FromBody]Product product)
         {
-            var saved = productHandler.Add(product);
+            var saved = _productHandler.Add(product);
 
             if(saved) return Ok("Produto cadastrado com sucesso");
 
@@ -24,7 +30,7 @@ namespace supermarket_api.Controllers
         [HttpDelete]
         public IActionResult Destroy([FromHeader] int id)
         {
-            var productDeleted = productHandler.Delete(id);
+            var productDeleted = _productHandler.Delete(id);
 
             if (productDeleted) return Ok("O produto foi excluído com sucesso");
 
@@ -34,7 +40,7 @@ namespace supermarket_api.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            var products = productHandler.Get();
+            var products = _productHandler.Get();
             if(products.Count > 0) return Ok(products);
 
             return Ok("Não há nenhum produto cadastrado");
@@ -43,7 +49,7 @@ namespace supermarket_api.Controllers
         [HttpGet("GetById")]
         public IActionResult GetById([FromHeader]int id)
         {
-            var product = productHandler.GetById(id);
+            var product = _productHandler.GetById(id);
 
             if (product != null) return Ok(product);
 
@@ -53,7 +59,7 @@ namespace supermarket_api.Controllers
         [HttpPut]
         public IActionResult Put(int id, [FromBody]Product product)
         {
-            var productUpdated = productHandler.Update(id, product);
+            var productUpdated = _productHandler.Update(id, product);
 
             if (productUpdated) return Ok("Produto atualizado com sucesso");
 
