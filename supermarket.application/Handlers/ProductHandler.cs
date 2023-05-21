@@ -1,11 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using supermarket.application.Interfaces;
 using supermarket.data.contexts;
 using supermarket.model;
 
 namespace supermarket.application.Handlers
 {
-    public class ProductHandler
+    public class ProductHandler : IProductHandler
     {
 
         public List<Product> Get()

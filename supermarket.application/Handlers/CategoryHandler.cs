@@ -1,10 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using supermarket.application.Interfaces;
 using supermarket.data.contexts;
 using supermarket.model;
 
 namespace supermarket.application.Handlers
 {
-    public class CategoryHandler
+    public class CategoryHandler : ICategoryHandler
     {
         public List<Category> Get()
         {
