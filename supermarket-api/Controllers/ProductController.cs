@@ -9,11 +9,11 @@ namespace supermarket_api.Controllers
     [ApiController]
     public class ProductController : ControllerBase
     {
+        ProductHandler productHandler = new ProductHandler();
+
         [HttpPost]
         public IActionResult Store([FromBody]Product product)
         {
-            var productHandler = new ProductHandler();
-
             var saved = productHandler.Add(product);
 
             if(saved) return Ok("Produto cadastrado com sucesso");
@@ -24,8 +24,6 @@ namespace supermarket_api.Controllers
         [HttpDelete]
         public IActionResult Destroy([FromHeader] int id)
         {
-            var productHandler = new ProductHandler();
-
             var productDeleted = productHandler.Delete(id);
 
             if (productDeleted) return Ok("O produto foi excluído com sucesso");
@@ -36,8 +34,6 @@ namespace supermarket_api.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            var productHandler = new ProductHandler();
-
             var products = productHandler.Get();
             if(products.Count > 0) return Ok(products);
 
@@ -47,8 +43,6 @@ namespace supermarket_api.Controllers
         [HttpGet("GetById")]
         public IActionResult GetById([FromHeader]int id)
         {
-            var productHandler = new ProductHandler();
-
             var product = productHandler.GetById(id);
 
             if (product != null) return Ok(product);
@@ -59,8 +53,6 @@ namespace supermarket_api.Controllers
         [HttpPut]
         public IActionResult Put(int id, [FromBody]Product product)
         {
-            var productHandler = new ProductHandler();
-
             var productUpdated = productHandler.Update(id, product);
 
             if (productUpdated) return Ok("Produto atualizado com sucesso");
