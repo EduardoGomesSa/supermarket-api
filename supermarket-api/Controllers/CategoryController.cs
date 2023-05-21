@@ -8,11 +8,11 @@ namespace supermarket_api.Controllers
     [ApiController]
     public class CategoryController : ControllerBase
     {
+        CategoryHandler categoryHandler = new CategoryHandler();
+
         [HttpGet]
         public IActionResult Index()
         {
-            var categoryHandler = new CategoryHandler();
-
             var categories = categoryHandler.Get();
 
             if(categories.Count > 0) return Ok(categories);
@@ -23,8 +23,6 @@ namespace supermarket_api.Controllers
         [HttpGet("GetById")]
         public IActionResult GetById(int id)
         {
-            var categoryHandler = new CategoryHandler();
-
             var category = categoryHandler.GetById(id);
 
             if (category != null) return Ok(category);
@@ -35,8 +33,6 @@ namespace supermarket_api.Controllers
         [HttpPut]
         public IActionResult Put([FromHeader]int id, [FromBody] Category category)
         {
-            var categoryHandler = new CategoryHandler();
-
             var categoryUpdeted = categoryHandler.Update(id, category);
 
             if(categoryUpdeted) return Ok("Category updeted with sucess");
