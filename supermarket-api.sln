@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "supermarket.data", "superma
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "supermarket.application", "supermarket.application\supermarket.application.csproj", "{E7E464E1-EF41-419A-9CA0-0490EAB78028}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "supermarket.dependencyinjection", "supermarket.dependencyinjection\supermarket.dependencyinjection.csproj", "{B23F4EBC-5836-4EAB-AFAF-E1EDB4E07DD4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{E7E464E1-EF41-419A-9CA0-0490EAB78028}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E7E464E1-EF41-419A-9CA0-0490EAB78028}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E7E464E1-EF41-419A-9CA0-0490EAB78028}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B23F4EBC-5836-4EAB-AFAF-E1EDB4E07DD4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B23F4EBC-5836-4EAB-AFAF-E1EDB4E07DD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B23F4EBC-5836-4EAB-AFAF-E1EDB4E07DD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B23F4EBC-5836-4EAB-AFAF-E1EDB4E07DD4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
