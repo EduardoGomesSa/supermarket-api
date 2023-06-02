@@ -20,6 +20,7 @@
   <ItemGroup>
     <ProjectReference Include="..\supermarket.application\supermarket.application.csproj" />
     <ProjectReference Include="..\supermarket.data\supermarket.data.csproj" />
+    <ProjectReference Include="..\supermarket.dependencyinjection\supermarket.dependencyinjection.csproj" />
   </ItemGroup>
 
 </Project>

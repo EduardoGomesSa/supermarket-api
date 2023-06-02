@@ -1,6 +1,7 @@
 
 using supermarket.application.Handlers;
 using supermarket.application.Interfaces;
+using supermarket.dependencyinjection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,8 +12,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddScoped<IProductHandler, ProductHandler>();
-builder.Services.AddScoped<ICategoryHandler, CategoryHandler>();
+DependencyInjection.AddDependencies(builder.Services);
 
 var app = builder.Build();
 
