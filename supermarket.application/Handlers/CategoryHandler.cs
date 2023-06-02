@@ -14,7 +14,6 @@ namespace supermarket.application.Handlers
             using (var context = new ApplicationContext())
             {
                 categories = context.Categories.ToList();
-                //categories = context.Categories.Include(c => c.Products).ToList();
             }
 
             return categories;
