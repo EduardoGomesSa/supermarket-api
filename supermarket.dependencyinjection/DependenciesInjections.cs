@@ -1,6 +1,8 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using supermarket.application.Handlers;
 using supermarket.application.Interfaces;
+using supermarket.service.Interfaces;
+using supermarket.service.services;
 
 namespace supermarket.dependencyinjection
 {
@@ -10,6 +12,8 @@ namespace supermarket.dependencyinjection
         {
             services.AddScoped<IProductHandler, ProductHandler>();
             services.AddScoped<ICategoryHandler, CategoryHandler>();
+            services.AddScoped<IProductService, ProductService>();
+            services.AddScoped<ICategoryService, CategoryService>();
         }
     }
 }
