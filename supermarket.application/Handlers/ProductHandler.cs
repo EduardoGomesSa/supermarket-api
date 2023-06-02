@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Infrastructure;
+using supermarket.application.Convertions;
 using supermarket.application.Interfaces;
-using supermarket.data.contexts;
+using supermarket.application.Requests;
 using supermarket.model;
 using supermarket.service.Interfaces;
 
@@ -26,8 +26,10 @@ namespace supermarket.application.Handlers
             return _productService.GetById(id);
         }
 
-        public bool Add(Product product)
+        public bool Add(ProductPostRequest productPostRequest)
         {
+            var product = Mapper.toProduct(productPostRequest);
+
             return _productService.Add(product);
         }
 
@@ -36,8 +38,10 @@ namespace supermarket.application.Handlers
             return _productService.Delete(id);
         }
 
-        public bool Update(int id, Product product)
+        public bool Update(int id, ProductPutRequest productPutRequest)
         {
+            var product = Mapper.toProduct(productPutRequest);
+
             return _productService.Update(id, product);
         }
     }

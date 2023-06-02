@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using supermarket.application.Convertions;
 using supermarket.application.Interfaces;
-using supermarket.data.contexts;
+using supermarket.application.Requests;
 using supermarket.model;
 using supermarket.service.Interfaces;
 
@@ -25,9 +26,9 @@ namespace supermarket.application.Handlers
             return _categoryService.GetById(id);
         }
 
-        public bool Update(int id, Category category)
+        public bool Update(int id, CategoryPutRequest categoryPutRequest)
         {
-            return _categoryService.Update(id, category);
+            return _categoryService.Update(id, Mapper.toCategory(categoryPutRequest));
         }
     }
 }

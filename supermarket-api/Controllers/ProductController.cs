@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using supermarket.application.Handlers;
 using supermarket.application.Interfaces;
+using supermarket.application.Requests;
 using supermarket.data.contexts;
 using supermarket.model;
 
@@ -18,13 +19,13 @@ namespace supermarket_api.Controllers
         }
 
         [HttpPost]
-        public IActionResult Store([FromBody]Product product)
+        public IActionResult Store([FromBody]ProductPostRequest productPostRequest)
         {
-            var saved = _productHandler.Add(product);
+            var saved = _productHandler.Add(productPostRequest);
 
-            if(saved) return Ok("Produto cadastrado com sucesso");
+            if(saved) return Ok("Product successfully registered");
 
-            return BadRequest("Não foi possivel cadastrar o produto");
+            return BadRequest("Failed to register the product");
         }
 
         [HttpDelete]
@@ -32,9 +33,9 @@ namespace supermarket_api.Controllers
         {
             var productDeleted = _productHandler.Delete(id);
 
-            if (productDeleted) return Ok("O produto foi excluído com sucesso");
+            if (productDeleted) return Ok("The product has been successfully deleted");
 
-            return BadRequest("Não foi possível excluir o produto");
+            return BadRequest("Failed to delete the product");
         }
 
         [HttpGet]
@@ -43,7 +44,7 @@ namespace supermarket_api.Controllers
             var products = _productHandler.Get();
             if(products.Count > 0) return Ok(products);
 
-            return Ok("Não há nenhum produto cadastrado");
+            return Ok("No product is registered");
         }
 
         [HttpGet("GetById")]
@@ -53,17 +54,17 @@ namespace supermarket_api.Controllers
 
             if (product != null) return Ok(product);
 
-            return NotFound("Produto não existe");
+            return NotFound("Product don´t exist");
         }
 
         [HttpPut]
-        public IActionResult Put(int id, [FromBody]Product product)
+        public IActionResult Put(int id, [FromBody] ProductPutRequest productPutRequest)
         {
-            var productUpdated = _productHandler.Update(id, product);
+            var productUpdated = _productHandler.Update(id, productPutRequest);
 
-            if (productUpdated) return Ok("Produto atualizado com sucesso");
+            if (productUpdated) return Ok("Product updated with success");
 
-            return BadRequest("Não foi possível atualizar o produto");
+            return BadRequest("Product don´t updated");
         }
     }
 }

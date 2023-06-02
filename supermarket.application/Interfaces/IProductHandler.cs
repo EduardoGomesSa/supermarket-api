@@ -1,4 +1,5 @@
-﻿using supermarket.model;
+﻿using supermarket.application.Requests;
+using supermarket.model;
 
 namespace supermarket.application.Interfaces
 {
@@ -6,8 +7,8 @@ namespace supermarket.application.Interfaces
     {
         List<Product> Get();
         Product GetById(int id);
-        bool Add(Product product);
+        bool Add(ProductPostRequest productPostRequest);
         bool Delete(int id);
-        bool Update(int id, Product product);
+        bool Update(int id, ProductPutRequest productPutRequest);
     }
 }

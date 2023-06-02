@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using supermarket.application.Handlers;
 using supermarket.application.Interfaces;
+using supermarket.application.Requests;
 using supermarket.model;
 
 namespace supermarket_api.Controllers
@@ -23,7 +24,7 @@ namespace supermarket_api.Controllers
 
             if(categories.Count > 0) return Ok(categories);
 
-            return Ok("Não tem nenhuma categoria cadastrada");
+            return Ok("No category is registered");
         }
 
         [HttpGet("GetById")]
@@ -33,13 +34,13 @@ namespace supermarket_api.Controllers
 
             if (category != null) return Ok(category);
 
-            return Ok("categoria não existe");
+            return Ok("category don't exist");
         }
 
         [HttpPut]
-        public IActionResult Put([FromHeader]int id, [FromBody] Category category)
+        public IActionResult Put([FromHeader]int id, [FromBody] CategoryPutRequest categoryPutRequest)
         {
-            var categoryUpdeted = _categoryHandler.Update(id, category);
+            var categoryUpdeted = _categoryHandler.Update(id, categoryPutRequest);
 
             if(categoryUpdeted) return Ok("Category updeted with sucess");
 
